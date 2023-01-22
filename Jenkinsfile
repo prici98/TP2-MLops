@@ -1,12 +1,24 @@
 pipeline {
     agent any
-
+    
     stages {
-        stage('Hello') {
+        stage('Building') {
             steps {
-                echo 'Hello World'
+                sh 'docker build -t nom_image .'
+
             }
         }
+
+        stage('Testing') {
+            steps {
+                sh 'python3 -m unittest'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'docker run -d nom_image'
+            }
+        }
+
     }
-    
 }
