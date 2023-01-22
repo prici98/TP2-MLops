@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Building') {
             steps {
-                sh 'docker build -t nom_image .'
+                sh 'docker build -t clockbox .'
 
             }
         }
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker run -d nom_image'
+                sh 'docker run -d clockbox'
             }
         }
 
